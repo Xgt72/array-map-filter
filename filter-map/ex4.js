@@ -64,6 +64,26 @@ En prenant les deux exemples d'arguments d'entrée, on obtiendrait ceci en sorti
 */
 
 function getActivitiesMembers(activities, persons) {
+  return activities.map(
+    (activity) => {
+      return persons.filter(
+        (person) => {
+          return Object.values(person.activities).indexOf(activity) >= 0 ? true : false;
+        }
+      );
+    }
+  ).map(
+    (activity, index) => {
+      return {
+        activity: activities[index],
+        persons: activity.map(
+          (person) => {
+            return person.name;
+          }
+        )
+      }
+    }
+  );
 }
 
 
